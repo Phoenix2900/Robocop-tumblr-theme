@@ -5,25 +5,15 @@
         <link rel="shortcut icon" href="{Favicon}">
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    	<script src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
 		<link href='http://fonts.googleapis.com/css?family=Ruda:400,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" type="text/css" media="screen" title="no title" charset="utf-8">
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.0.2/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-27610376-1']);
-		  _gaq.push(['_setDomainName', 'bentzen.ws']);
-		  _gaq.push(['_trackPageview']);
-
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-
-		</script>
 		
+		<!--
+			Custom Stuff Here
+		-->
+		<meta name="color:Background" content="#5a5a5a"/>
         {block:Description}
             <meta name="description" content="{MetaDescription}" />
         {/block:Description}
@@ -32,8 +22,7 @@
 				width:100%;
 				font-size:14pt;
 				padding-top:50px;
-				background-color:#5a5a5a;
-	/*			color:#fefefe;*/
+				background-color:{color:Background};
 			}
 			img{
 				border-radius: 2px;
@@ -49,6 +38,45 @@
 			.extras{
 				float:right;
 			}
+			.reblog{
+				font-size:10pt;
+			}
+            ol.notes {
+                padding: 0px;
+                margin: 25px 0px;
+                list-style-type: none;
+                border-bottom: solid 1px #ccc;
+            }
+
+            ol.notes li.note {
+                border-top: solid 1px #ccc;
+                padding: 10px;
+            }
+
+            ol.notes li.note img.avatar {
+                vertical-align: -4px;
+                margin-right: 10px;
+                width: 16px;
+                height: 16px;
+            }
+
+            ol.notes li.note span.action {
+                font-weight: bold;
+            }
+
+            ol.notes li.note .answer_content {
+                font-weight: normal;
+            }
+
+            ol.notes li.note blockquote {
+                border-color: #eee;
+                padding: 4px 10px;
+                margin: 10px 0px 0px 25px;
+            }
+
+            ol.notes li.note blockquote a {
+                text-decoration: none;
+            }
 		</style>
     </head>
     <body>
@@ -57,11 +85,17 @@
 		    <div class="container">
 		  	<a class="brand" href="http://bentzen.ws/"><img height="16px" width="16px" src="http://bentzen.ws/images/MyFace.jpg" alt="My Face"> Shaun Bentzen</a>
 			<ul class="nav pull-left">
-		  	    <li><a href="http://bentzen.ws/">About</a></li>
-		  	    <li><a href="http://bentzen.ws/blog.html">Blog</a></li>
-		  	    <li><a href="mailto:sbentzen@gmail.com">Contact</a></li>
+				{block:HasPages}
+				{block:Pages}
+				<li><a href="{URL}">{Label}</a></li>
+				{/block:Pages}
+				{/block:HasPages}
 		  	</ul>
-		    <ul class="nav pull-right">
+			<form action="/search" class="navbar-search pull-right" method="get">
+			    <input type="text" name="q" class="input-medium search-query" placeholder="Search" value="{SearchQuery}"/>
+			</form>
+			
+		    <ul class="nav pull-left">
 			    <li class="dropdown">
 			       <a href="#"
 			             class="dropdown-toggle"
@@ -115,18 +149,17 @@
 						<div class="row span12">
 							<div class="well post">
 								<div class="extras">
-									{block:PostNotes}
-										<a href="{Permalink}"><i class="icon-list-alt"></i> {NoteCountWithLabel}</a>
-									{/block:PostNotes}
-									{block:Text}<a style="float:right;" href="{permalink}"><i class="icon-font">&nbsp;</i></a>{/block:Text}
-									{block:Photo}<a style="float:right;" href="{permalink}"><i class="icon-camera">&nbsp;</i></a>{/block:Photo}
-				               	 	{block:Photoset}<a style="float:right;" href="{permalink}"><i class="icon-picture">&nbsp;</i></a>{/block:Photoset}
-				                	{block:Quote}<a style="float:right;" href="{permalink}"><i class="icon-comment">&nbsp;</i></a>{/block:Quote}
-				                	{block:Link}<a style="float:right;" href="{permalink}"><i class="icon-share">&nbsp;</i></a> {/block:Link}
-				                	{block:Chat}<a style="float:right;" href="{permalink}"><i class="icon-user">&nbsp;</i><i class="icon-comment">&nbsp;</i></a>{/block:Chat}
-				                	{block:Video}<a style="float:right;" href="{permalink}"><i class="icon-film">&nbsp;</i></a>{/block:Video}
-				                	{block:Audio}<a style="float:right;" href="{permalink}"><i class="icon-headphones">&nbsp;</i></a>{/block:Audio}
-				                	{block:Answer}<a style="float:right;" href="{permalink}"><i class="icon-ok-sign">&nbsp;</i></a>{/block:Answer}
+									{block:NoteCount}<a href="{Permalink}"><i class="icon-list-alt"></i> {NoteCountWithLabel}</a> {/block:NoteCount}
+									<br/>
+									{block:Text}<a href="{permalink}"><i class="icon-font">&nbsp;</i></a>{/block:Text}
+									{block:Photo}<a href="{permalink}"><i class="icon-camera">&nbsp;</i></a>{/block:Photo}
+				               	 	{block:Photoset}<a href="{permalink}"><i class="icon-picture">&nbsp;</i></a>{/block:Photoset}
+				                	{block:Quote}<a href="{permalink}"><i class="icon-comment">&nbsp;</i></a>{/block:Quote}
+				                	{block:Link}<a href="{permalink}"><i class="icon-share">&nbsp;</i></a> {/block:Link}
+				                	{block:Chat}<a href="{permalink}"><i class="icon-user">&nbsp;</i><i class="icon-comment">&nbsp;</i></a>{/block:Chat}
+				                	{block:Video}<a href="{permalink}"><i class="icon-film">&nbsp;</i></a>{/block:Video}
+				                	{block:Audio}<a href="{permalink}"><i class="icon-headphones">&nbsp;</i></a>{/block:Audio}
+				                	{block:Answer}<a href="{permalink}"><i class="icon-ok-sign">&nbsp;</i></a>{/block:Answer}
 								</div>
 								<div class="post-content">
 					                {block:Text}
@@ -239,7 +272,7 @@
 								
 								{block:RebloggedFrom} 
 				                <div class="reblog">
-									Reblogged from: {ReblogParentName} at <a href="{ReblogParentURL}"> {ReblogParentTitle}</a>
+									Reblogged from: {ReblogParentName} at <a href="{ReblogParentURL}"> {ReblogParentTitle}</a><br/>
 				                	Originated from: {ReblogRootName} at <a href="{ReblogRootURL}"> {ReblogRootTitle}</a>
 				                </div>
 								{/block:RebloggedFrom}
@@ -249,23 +282,6 @@
 					{/block:Posts}
 					<!--
 						Followers
-					-->
-					<div class="row span12">
-						{block:Following}
-						Blogs I Follow:
-						<ul class="thumbnails">
-						{block:Followed}	
-						  <li class="span1">
-						    <a href="{FollowedURL}" class="thumbnail">
-						      <img src="{FollowedPortraitURL-64}" alt="{FollowedTitle}">
-						    </a>
-						  </li>
-						  {/block:Followed}
-						</ul>
-						{/block:Following}
-					</div>
-					<!--
-						Pagination
 					-->
 					<div class="row span12">
 				        <p id="footer">
@@ -280,7 +296,24 @@
 				            <a href="/archive">Archive</a>
 				        </p>
 					</div>
-				
+					
+					{block:IndexPage}
+					<div class="row span12">
+						{block:Following}
+						Blogs I Follow:
+						<ul class="thumbnails">
+						{block:Followed}	
+						  <li class="span1">
+						    <a href="{FollowedURL}" class="thumbnail">
+						      <img src="{FollowedPortraitURL-64}" alt="{FollowedTitle}">
+						    </a>
+						  </li>
+						  {/block:Followed}
+						</ul>
+						{/block:Following}
+					</div>
+					
+					{/block:IndexPage}
 				</div>
 			</div>
 		</div>
