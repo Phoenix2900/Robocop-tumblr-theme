@@ -46,12 +46,15 @@
 			.thumbnail{
 				border:none;
 			}
+			.extras{
+				float:right;
+			}
 		</style>
     </head>
     <body>
 		<div class="navbar navbar-fixed-top">
 		  <div class="navbar-inner">
-		    <div class="container-fluid">
+		    <div class="container">
 		  	<a class="brand" href="http://bentzen.ws/"><img height="16px" width="16px" src="http://bentzen.ws/images/MyFace.jpg" alt="My Face"> Shaun Bentzen</a>
 			<ul class="nav pull-left">
 		  	    <li><a href="http://bentzen.ws/">About</a></li>
@@ -92,8 +95,8 @@
 		    </div>
 		  </div>
 		</div>
-		<div class="container-fluid">
-			<div class="row-fluid span12">
+		<div class="container">
+			<div class="row span12">
 				<div class="span12">
 					<div class="hero-unit">
 						<h1>{Title}</h1>
@@ -103,123 +106,151 @@
 					</div>
 				</div>
 			</div>
-			<div class="row-fluid span12">
-				<div class="span9">
+			<div class="row span12">
+				<!--
+					Post Block
+				-->
+				<div class="span12">
 					{block:Posts}
-						<div class="row-fluid span12">
+						<div class="row span12">
 							<div class="well post">
-				                {block:Text}
-				                    <div class=" text">
-				                        {block:Title}
-				                            <h3><a href="{Permalink}">{Title}</a></h3>
-				                        {/block:Title}
+								<div class="extras">
+									{block:PostNotes}
+										<a href="{Permalink}"><i class="icon-list-alt"></i> {NoteCountWithLabel}</a>
+									{/block:PostNotes}
+									{block:Text}<a style="float:right;" href="{permalink}"><i class="icon-font">&nbsp;</i></a>{/block:Text}
+									{block:Photo}<a style="float:right;" href="{permalink}"><i class="icon-camera">&nbsp;</i></a>{/block:Photo}
+				               	 	{block:Photoset}<a style="float:right;" href="{permalink}"><i class="icon-picture">&nbsp;</i></a>{/block:Photoset}
+				                	{block:Quote}<a style="float:right;" href="{permalink}"><i class="icon-comment">&nbsp;</i></a>{/block:Quote}
+				                	{block:Link}<a style="float:right;" href="{permalink}"><i class="icon-share">&nbsp;</i></a> {/block:Link}
+				                	{block:Chat}<a style="float:right;" href="{permalink}"><i class="icon-user">&nbsp;</i><i class="icon-comment">&nbsp;</i></a>{/block:Chat}
+				                	{block:Video}<a style="float:right;" href="{permalink}"><i class="icon-film">&nbsp;</i></a>{/block:Video}
+				                	{block:Audio}<a style="float:right;" href="{permalink}"><i class="icon-headphones">&nbsp;</i></a>{/block:Audio}
+				                	{block:Answer}<a style="float:right;" href="{permalink}"><i class="icon-ok-sign">&nbsp;</i></a>{/block:Answer}
+								</div>
+								<div class="post-content">
+					                {block:Text}
+					                    <div class="text">
+					                        {block:Title}
+					                            <h3><a href="{Permalink}">{Title}</a></h3>
+					                        {/block:Title}
 
-				                        {Body}
-				                    </div>
-				                {/block:Text}
-				                {block:Photo}
-				                    <div class=" photo">
-				                        <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+					                        {Body}
+					                    </div>
+					                {/block:Text}
+					                {block:Photo}
+					                    <div class="photo">
+					                        <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
 
-				                        {block:Caption}
-				                            <div class="caption">{Caption}</div>
-				                        {/block:Caption}
-				                    </div>
-				                {/block:Photo}
-				                {block:Photoset}
-				                    <div class=" photoset">
-				                        {Photoset-500}
+					                        {block:Caption}
+					                            <div class="caption">{Caption}</div>
+					                        {/block:Caption}
+					                    </div>
+					                {/block:Photo}
+					                {block:Photoset}
+					                    <div class="photoset">
+					                        {Photoset-500}
 
-				                        {block:Caption}
-				                            <div class="caption">{Caption}</div>
-				                        {/block:Caption}
-				                    </div>
-				                {/block:Photoset}
-				                {block:Quote}
-				                    <div class=" quote">
-				                        <blockquote>
-										<p>{Quote}</p>
+					                        {block:Caption}
+					                            <div class="caption">{Caption}</div>
+					                        {/block:Caption}
+					                    </div>
+					                {/block:Photoset}
+					                {block:Quote}
+					                    <div class="quote">
+					                        <blockquote>
+											<p>{Quote}</p>
 
-				                        {block:Source}
-				                            <small>{Source}</small>
-				                        {/block:Source}
-										</blockquote>
-				                    </div>
-				                {/block:Quote}
-				                {block:Link}
-				                    <div class=" link">
-				                        <a href="{URL}" class="link" {Target}>{Name}</a>
+					                        {block:Source}
+					                            <small>{Source}</small>
+					                        {/block:Source}
+											</blockquote>
+					                    </div>
+					                {/block:Quote}
+					                {block:Link}
+					                    <div class="link">
+					                        <a href="{URL}" class="link" {Target}>{Name}</a>
 
-				                        {block:Description}
-				                            <div class="description">{Description}</div>
-				                        {/block:Description}
-				                    </div>
-				                {/block:Link}
-				                {block:Chat}
-				                    <div class=" chat">
-				                        {block:Title}
-				                            <h3><a href="{Permalink}">{Title}</a></h3>
-				                        {/block:Title}
+					                        {block:Description}
+					                            <div class="description">{Description}</div>
+					                        {/block:Description}
+					                    </div>
+					                {/block:Link}
+					                {block:Chat}
+					                    <div class="chat">
+					                        {block:Title}
+					                            <h3><a href="{Permalink}">{Title}</a></h3>
+					                        {/block:Title}
 
-				                        <ul class="chat unstyled">
-				                            {block:Lines}
-				                                <li class="{Alt} user_{UserNumber}">
-				                                    {block:Label}
-				                                        <span class="label">{Label}</span>
-				                                    {/block:Label}
+					                        <ul class="chat unstyled">
+					                            {block:Lines}
+					                                <li class="{Alt} user_{UserNumber}">
+					                                    {block:Label}
+					                                        <span class="label">{Label}</span>
+					                                    {/block:Label}
 
-				                                    {Line}
-				                                </li>
-				                            {/block:Lines}
-				                        </ul>
-				                    </div>
-				                {/block:Chat}
-				                {block:Video}
-				                    <div class=" video">
-				                        {Video-500}
+					                                    {Line}
+					                                </li>
+					                            {/block:Lines}
+					                        </ul>
+					                    </div>
+					                {/block:Chat}
+					                {block:Video}
+					                    <div class="video">
+					                        {Video-500}
 
-				                        {block:Caption}
-				                            <div class="caption">{Caption}</div>
-				                        {/block:Caption}
-				                    </div>
-				                {/block:Video}
-				                {block:Audio}
-				                    <div class=" audio">
-				                        {AudioPlayerBlack}
+					                        {block:Caption}
+					                            <div class="caption">{Caption}</div>
+					                        {/block:Caption}
+					                    </div>
+					                {/block:Video}
+					                {block:Audio}
+					                    <div class="audio">
+					                        {AudioPlayerBlack}
 
-				                        {block:Caption}
-				                            <div class="caption">{Caption}</div>
-				                        {/block:Caption}
-				                    </div>
-				                {/block:Audio}
-				                {block:Answer}
-				                    <div class=" answer">
-				                        <img src="{AskerPortraitURL-64}"/> {Asker} <cite>{Question}</cite><br/>
-										<span class="label label-inverse">Answer:</span> {Answer}
-				                    </div>
-				                {/block:Answer}
+					                        {block:Caption}
+					                            <div class="caption">{Caption}</div>
+					                        {/block:Caption}
+					                    </div>
+					                {/block:Audio}
+					                {block:Answer}
+					                    <div class="answer">
+					                        <img src="{AskerPortraitURL-64}"/> {Asker} <cite>{Question}</cite><br/>
+											<span class="label label-inverse">Answer:</span> {Answer}
+					                    </div>
+					                {/block:Answer}
+									<!--
+										Permalink Page Block
+									-->
+									{block:PermalinkPage}
+									{block:PostNotes}
+									{PostNotes}
+									{/block:PostNotes}
+									{/block:PermalinkPage}
+									<!--
+										Tags Block
+									-->
+								</div>
+								{block:HasTags}
+			                        {block:Tags}
+			                              <span class="label label-info"><a style="color:white;" href="{TagURL}">{Tag}</a></span>
+			                        {/block:Tags}
+								{/block:HasTags}
+								
+								{block:RebloggedFrom} 
+				                <div class="reblog">
+									Reblogged from: {ReblogParentName} at <a href="{ReblogParentURL}"> {ReblogParentTitle}</a>
+				                	Originated from: {ReblogRootName} at <a href="{ReblogRootURL}"> {ReblogRootTitle}</a>
+				                </div>
+								{/block:RebloggedFrom}
+				                
 							</div>
 						</div>
 					{/block:Posts}
-						<div class="row-fluid span12">
-					        <p id="footer">
-					            {block:PreviousPage}
-					                <a href="{PreviousPage}">&#171; Previous</a>
-					            {/block:PreviousPage}
-
-					            {block:NextPage}
-					                <a href="{NextPage}">Next &#187;</a>
-					            {/block:NextPage}
-
-					            <a href="/archive">Archive</a>
-					        </p>
-						</div>
-				
-				</div>
-				<div class="span3">
-					<div class="well">
-						...
-						
+					<!--
+						Followers
+					-->
+					<div class="row span12">
 						{block:Following}
 						Blogs I Follow:
 						<ul class="thumbnails">
@@ -232,10 +263,25 @@
 						  {/block:Followed}
 						</ul>
 						{/block:Following}
-						
 					</div>
-				</div>
+					<!--
+						Pagination
+					-->
+					<div class="row span12">
+				        <p id="footer">
+				            {block:PreviousPage}
+				                <a href="{PreviousPage}">&#171; Previous</a>
+				            {/block:PreviousPage}
+
+				            {block:NextPage}
+				                <a href="{NextPage}">Next &#187;</a>
+				            {/block:NextPage}
+
+				            <a href="/archive">Archive</a>
+				        </p>
+					</div>
 				
+				</div>
 			</div>
 		</div>
     </body>
