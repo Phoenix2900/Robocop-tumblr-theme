@@ -5,7 +5,7 @@
         <link rel="shortcut icon" href="{Favicon}">
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    	<script src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
 		<link href='http://fonts.googleapis.com/css?family=Ruda:400,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" type="text/css" media="screen" title="no title" charset="utf-8">
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.0.2/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
@@ -83,7 +83,7 @@
 		<div class="navbar navbar-fixed-top">
 		  <div class="navbar-inner">
 		    <div class="container">
-		  	<a class="brand" href="http://bentzen.ws/"><img height="16px" width="16px" src="http://bentzen.ws/images/MyFace.jpg" alt="My Face"> Shaun Bentzen</a>
+		  	<a class="brand" href="/"><img src="{PortraitURL-16}" alt="{Title}"> {Title}</a>
 			<ul class="nav pull-left">
 				{block:HasPages}
 				{block:Pages}
@@ -106,24 +106,6 @@
 			       <ul class="dropdown-menu">
 					{block:AskEnabled}<li><a href="/ask"><i class="icon-comment"></i>&nbsp;{AskLabel}</a></li>{/block:AskEnabled}
 					{block:SubmissionsEnabled}<li><a href="/submit"><i class="icon-folder-open"></i>&nbsp;{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
-			       </ul>
-			</ul>
-							
-		    <ul class="nav pull-right">
-			    <li class="dropdown">
-			       <a href="#"
-			             class="dropdown-toggle"
-			             data-toggle="dropdown">
-			             Social Media
-			             <b class="caret"></b>
-			       </a>
-			       <ul class="dropdown-menu">
-					<li><a href="http://isms.bentzen.ws/">Bentzenisms</a></li>
-			   	    <li><a href="https://github.com/sbentzen">Github</a></li>
-			   	    <li><a href="https://plus.google.com/114535672384891706672">Google+</a></li>
-			   	    <li><a href="http://ca.linkedin.com/pub/shaun-bentzen/2b/264/713">LinkedIn</a></li>
-					<li><a href="http://tumblr.bentzen.ws/">Tumblr Blog</a></li>
-			   	    <li><a href="http://twitter.com/smbentzen">Twitter</a></li>
 			       </ul>
 			</ul>
 		    </div>
