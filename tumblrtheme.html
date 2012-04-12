@@ -80,39 +80,8 @@
 		</style>
     </head>
     <body>
-		<div class="navbar navbar-fixed-top">
-		  <div class="navbar-inner">
-		    <div class="container">
-		  	<a class="brand" href="/"><img src="{PortraitURL-16}" alt="{Title}"> {Title}</a>
-			<ul class="nav pull-left">
-				{block:HasPages}
-				{block:Pages}
-				<li><a href="{URL}">{Label}</a></li>
-				{/block:Pages}
-				{/block:HasPages}
-		  	</ul>
-			<form action="/search" class="navbar-search pull-right" method="get">
-			    <input type="text" name="q" class="input-medium search-query" placeholder="Search" value="{SearchQuery}"/>
-			</form>
-			
-		    <ul class="nav pull-left">
-			    <li class="dropdown">
-			       <a href="#"
-			             class="dropdown-toggle"
-			             data-toggle="dropdown">
-			             Interact
-			             <b class="caret"></b>
-			       </a>
-			       <ul class="dropdown-menu">
-					{block:AskEnabled}<li><a href="/ask"><i class="icon-comment"></i>&nbsp;{AskLabel}</a></li>{/block:AskEnabled}
-					{block:SubmissionsEnabled}<li><a href="/submit"><i class="icon-folder-open"></i>&nbsp;{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
-			       </ul>
-			</ul>
-		    </div>
-		  </div>
-		</div>
 		<div class="container">
-			<div class="row span12">
+			<div class="row">
 				<div class="span12">
 					<div class="hero-unit">
 						<h1><a href="/">{Title}</a></h1>
@@ -122,17 +91,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="row span12">
-				<!--
-					Post Block
-				-->
-				<div class="span12">
+			<div class="row">
+				<div class="span8">
 					{block:Posts}
-						<div class="row span12">
+						<div class="row span8">
 							<div class="well post">
 								<div class="extras">
-									{block:NoteCount}<a href="{Permalink}"><i class="icon-list-alt"></i> {NoteCountWithLabel}</a> {/block:NoteCount}
-									<br/>
 									{block:Text}<a href="{permalink}"><i class="icon-font">&nbsp;</i></a>{/block:Text}
 									{block:Photo}<a href="{permalink}"><i class="icon-camera">&nbsp;</i></a>{/block:Photo}
 				               	 	{block:Photoset}<a href="{permalink}"><i class="icon-picture">&nbsp;</i></a>{/block:Photoset}
@@ -258,46 +222,70 @@
 				                	Originated from: {ReblogRootName} at <a href="{ReblogRootURL}"> {ReblogRootTitle}</a>
 				                </div>
 								{/block:RebloggedFrom}
+								<div class="extras">
+									{block:NoteCount}<a href="{Permalink}"><i class="icon-list-alt"></i> {NoteCountWithLabel}</a> {/block:NoteCount}
+								</div>
 				                
 							</div>
 						</div>
 					{/block:Posts}
-					<!--
-						Followers
-					-->
-					<div class="row span12">
-				        <p id="footer">
-				            {block:PreviousPage}
-				                <a href="{PreviousPage}">&#171; Previous</a>
-				            {/block:PreviousPage}
-
-				            {block:NextPage}
-				                <a href="{NextPage}">Next &#187;</a>
-				            {/block:NextPage}
-
-				            <a href="/archive">Archive</a>
-				        </p>
-					</div>
-					
-					{block:IndexPage}
-					<div class="row span12">
-						{block:Following}
-						Blogs I Follow:
-						<ul class="thumbnails">
-						{block:Followed}	
-						  <li class="span1">
-						    <a href="{FollowedURL}" class="thumbnail">
-						      <img src="{FollowedPortraitURL-64}" alt="{FollowedTitle}">
-						    </a>
+				</div>
+				<div class="span4" style="padding-left:20px">
+					<div class="well">
+						<ul class="nav nav-list">
+						  <li>
+						    <a href="/"><img src="{PortraitURL-40}"> {Title}</a>
 						  </li>
-						  {/block:Followed}
+						{block:HasPages}
+						{block:Pages}
+						<li class="divider"></li>
+						<li><a href="{URL}"><i class="icon-file"></i>{Label}</a></li>
+						{/block:Pages}
+						{/block:HasPages}
+						<li class="divider"></li>
+						{block:AskEnabled}<li><a href="/ask"><i class="icon-comment"></i>&nbsp;{AskLabel}</a></li>{/block:AskEnabled}
+						{block:SubmissionsEnabled}<li><a href="/submit"><i class="icon-folder-open"></i>&nbsp;{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
+						<li class="divider"></li>
+						<form action="/search" class="" method="get">
+						    <input type="text" name="q" class="input-medium search-query" placeholder="Search" value="{SearchQuery}"/>
+						</form>
+						
 						</ul>
-						{/block:Following}
 					</div>
-					
-					{/block:IndexPage}
 				</div>
 			</div>
+			<div class="row">
+		        <p id="footer">
+		            {block:PreviousPage}
+		                <a href="{PreviousPage}">&#171; Previous</a>
+		            {/block:PreviousPage}
+
+		            {block:NextPage}
+		                <a href="{NextPage}">Next &#187;</a>
+		            {/block:NextPage}
+
+		            <a href="/archive">Archive</a>
+		        </p>
+			</div>
+					
+			{block:IndexPage}
+			<div class="row">
+				{block:Following}
+				Blogs I Follow:
+				<ul class="thumbnails">
+				{block:Followed}	
+				  <li class="span1">
+				    <a href="{FollowedURL}" class="thumbnail">
+				      <img src="{FollowedPortraitURL-64}" alt="{FollowedTitle}">
+				    </a>
+				  </li>
+				  {/block:Followed}
+				</ul>
+				{/block:Following}
+			</div>
+					
+			{/block:IndexPage}
+			
 		</div>
     </body>
 </html>
