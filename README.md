@@ -1,4 +1,4 @@
-#My Personal Tumblr Theme#
+#Tumblr Theme#
 
-Will soon be at [my tumblr site](http://tumblr.bentzen.ws)  
-However, that will be once I think it's ready.
+This theme integrates Twitter's [Bootstrap](http://twitter.github.com/bootstrap/)  
+It can be seen (slightly modified) at my [tumblr site](http://tumblr.bentzen.ws)
