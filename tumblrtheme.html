@@ -77,6 +77,57 @@
             ol.notes li.note blockquote a {
                 text-decoration: none;
             }
+			.block > .text{
+				position:relative;
+				top:2px;
+				right:2px;
+				padding-top:32px;
+				background-color:rgb(69,70,71);
+			}
+			.block > .photo{
+				position:relative;
+				top:2px;
+				right:2px;
+				padding-top:32px;
+				background-color:rgb(216,96,66);
+			}
+			.block > .link{
+				position:relative;
+				top:2px;
+				right:2px;
+				padding-top:32px;
+				background-color:rgb(86,188,136);
+			}
+			.block > .quote{
+				position:relative;
+				top:2px;
+				right:2px;
+				padding-top:32px;
+				background-color:rgb(241,159,53);
+			}
+			.block > .video{
+				position:relative;
+				top:2px;
+				right:2px;
+				padding-top:32px;
+				background-color:rgb(117,127,140);
+			}
+			.block > .audio{
+				position:relative;
+				top:2px;
+				right:2px;
+				padding-top:32px;
+				background-color:rgb(171,125,194);
+			}
+			.block > .chat{
+				position:relative;
+				top:2px;
+				right:2px;
+				padding-top:32px;
+				background-color:rgb(77,168,212);
+			}
+			
+			
 		</style>
     </head>
     <body>
@@ -97,15 +148,17 @@
 						<div class="row span8">
 							<div class="well post">
 								<div class="extras">
-									{block:Text}<a href="{permalink}"><i class="icon-font">&nbsp;</i></a>{/block:Text}
-									{block:Photo}<a href="{permalink}"><i class="icon-camera">&nbsp;</i></a>{/block:Photo}
-				               	 	{block:Photoset}<a href="{permalink}"><i class="icon-picture">&nbsp;</i></a>{/block:Photoset}
-				                	{block:Quote}<a href="{permalink}"><i class="icon-comment">&nbsp;</i></a>{/block:Quote}
-				                	{block:Link}<a href="{permalink}"><i class="icon-share">&nbsp;</i></a> {/block:Link}
-				                	{block:Chat}<a href="{permalink}"><i class="icon-user">&nbsp;</i><i class="icon-comment">&nbsp;</i></a>{/block:Chat}
-				                	{block:Video}<a href="{permalink}"><i class="icon-film">&nbsp;</i></a>{/block:Video}
-				                	{block:Audio}<a href="{permalink}"><i class="icon-headphones">&nbsp;</i></a>{/block:Audio}
-				                	{block:Answer}<a href="{permalink}"><i class="icon-ok-sign">&nbsp;</i></a>{/block:Answer}
+									<div class="block">
+										{block:Text}<a class="text" href="{permalink}"><i class="icon-font icon-white">&nbsp;</i></a>{/block:Text}
+										{block:Photo}<a class="photo" href="{permalink}"><i class="icon-camera icon-white">&nbsp;</i></a>{/block:Photo}
+					               	 	{block:Photoset}<a class="photo" href="{permalink}"><i class="icon-picture icon-white">&nbsp;</i></a>{/block:Photoset}
+					                	{block:Quote}<a class="quote" href="{permalink}"><i class="icon-comment icon-white">&nbsp;</i></a>{/block:Quote}
+					                	{block:Link}<a class="link" href="{permalink}"><i class="icon-share icon-white">&nbsp;</i></a> {/block:Link}
+					                	{block:Chat}<a class="chat" href="{permalink}"><i class="icon-user icon-white">&nbsp;</i><i class="icon-comment icon-white">&nbsp;</i></a>{/block:Chat}
+					                	{block:Video}<a class="video" href="{permalink}"><i class="icon-film icon-white">&nbsp;</i></a>{/block:Video}
+					                	{block:Audio}<a class="audio" href="{permalink}"><i class="icon-headphones icon-white">&nbsp;</i></a>{/block:Audio}
+					                	{block:Answer}<a class="quote" href="{permalink}"><i class="icon-ok-sign icon-white">&nbsp;</i></a>{/block:Answer}
+									</div>
 								</div>
 								<div class="post-content">
 					                {block:Text}
@@ -222,7 +275,7 @@
 				                	Originated from: {ReblogRootName} at <a href="{ReblogRootURL}"> {ReblogRootTitle}</a>
 				                </div>
 								{/block:RebloggedFrom}
-								<div class="extras">
+								<div class="extras" style="padding-bottom:0.5em;">
 									{block:NoteCount}<a href="{Permalink}"><i class="icon-list-alt"></i> {NoteCountWithLabel}</a> {/block:NoteCount}
 								</div>
 				                
